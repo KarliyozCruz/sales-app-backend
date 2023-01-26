@@ -1,7 +1,6 @@
 import Express from 'express';
 import { graphqlHTTP } from 'express-graphql';
-import { rootValue } from './graphql/export-resolvers';
-import { schema } from './graphql/export-schema';
+import { rootValue, schema } from './graphql';
 import cors from 'cors';
 import connection from './sequelize';
 

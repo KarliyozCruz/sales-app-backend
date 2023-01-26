@@ -6,23 +6,38 @@ import UserQueries from "./queries/User";
 import CategoryTypes from "./types/Category";
 import ProductTypes from "./types/Product";
 import UserTypes from "./types/User";
+import { buildSchema } from 'graphql';
 
-export const queriesSchema = `
+const queriesSchema = `
 ${UserQueries}
 ${CategoryQueries}
 ${ProductQueries}
 `;
 
-export const mutationsSchema = `
+const mutationsSchema = `
 ${UserMutations}
 `;
 
-export const typesSchema = `
+const typesSchema = `
 ${UserTypes}
 ${CategoryTypes}
 ${ProductTypes}
 `;
 
-export const inputsSchema = `
+const inputsSchema = `
 ${UserInputs}
 `;
+
+export const schema = buildSchema(`
+    type Query {
+        ${queriesSchema}
+    }
+
+    type Mutation {
+        ${mutationsSchema}
+    }
+
+    ${typesSchema}
+
+    ${inputsSchema}
+`);

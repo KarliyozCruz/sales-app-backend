@@ -3,7 +3,7 @@ import CategoryQueries from "./queries/Category";
 import ProductQueries from "./queries/Product";
 import UserMutations from "./mutations/User";
 
-export default {
+export const rootValue = {
     ...UserQueries,
     ...CategoryQueries,
     ...ProductQueries,
