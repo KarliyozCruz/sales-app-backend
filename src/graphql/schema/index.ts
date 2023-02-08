@@ -1,43 +1,11 @@
-import UserInputs from "./inputs/User";
-import UserMutations from "./mutations/User";
-import CategoryQueries from "./queries/Category";
-import ProductQueries from "./queries/Product";
-import UserQueries from "./queries/User";
-import CategoryTypes from "./types/Category";
-import ProductTypes from "./types/Product";
-import UserTypes from "./types/User";
-import { buildSchema } from 'graphql';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { mergeTypeDefs } from '@graphql-tools/merge';
+import { loadFilesSync } from "@graphql-tools/load-files";
+import { resolvers } from "../resolvers";
 
-const queriesSchema = `
-${UserQueries}
-${CategoryQueries}
-${ProductQueries}
-`;
+export const typeDefs = mergeTypeDefs(loadFilesSync(`${__dirname}/**/*.graphql`));
 
-const mutationsSchema = `
-${UserMutations}
-`;
-
-const typesSchema = `
-${UserTypes}
-${CategoryTypes}
-${ProductTypes}
-`;
-
-const inputsSchema = `
-${UserInputs}
-`;
-
-export const schema = buildSchema(`
-    type Query {
-        ${queriesSchema}
-    }
-
-    type Mutation {
-        ${mutationsSchema}
-    }
-
-    ${typesSchema}
-
-    ${inputsSchema}
-`);
+export const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers
+});

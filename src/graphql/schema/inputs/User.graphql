@@ -1,0 +1,5 @@
+input UserInput {
+    id: Int
+    names: String
+    last_names: String
+} 

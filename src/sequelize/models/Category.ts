@@ -12,8 +12,7 @@ import {
 import Product from './Product';
 
 @Table({
-    tableName: 'category',
-	timestamps: false
+    tableName: 'category'
 })
 
 export default class Category extends Model<Category> {
@@ -25,14 +24,14 @@ export default class Category extends Model<Category> {
 	@HasMany(() => Product, 'category_id')
     declare products: Product[];
 
-	// @CreatedAt
-	// @IsDate
-	// @Column(DataType.TIME)
-	// created_at: Date;
+	@CreatedAt
+	@IsDate
+	@Column(DataType.TIME)
+	created_at: Date;
 
-	// @UpdatedAt
-	// @IsDate
-	// @Column(DataType.TIME)
-	// updated_at: Date;
+	@UpdatedAt
+	@IsDate
+	@Column(DataType.TIME)
+	updated_at: Date;
 
 }

@@ -1,0 +1,5 @@
+type Category {
+    id: Int!
+    description: String!
+    products: [Product]!
+}

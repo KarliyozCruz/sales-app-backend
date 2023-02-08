@@ -16,8 +16,7 @@ import Category from './Category';
 import SaleDetail from './SaleDetail';
 
 @Table({
-    tableName: 'product',
-	timestamps: false
+    tableName: 'product'
 })
 
 export default class Product extends Model<Product> {
@@ -45,14 +44,14 @@ export default class Product extends Model<Product> {
 	@HasMany(() => SaleDetail, 'product_id')
     declare saleDetails: SaleDetail[];
 
-	// @CreatedAt
-	// @IsDate
-	// @Column(DataType.TIME)
-	// created_at: Date;
+	@CreatedAt
+	@IsDate
+	@Column(DataType.TIME)
+	created_at: Date;
 
-	// @UpdatedAt
-	// @IsDate
-	// @Column(DataType.TIME)
-	// updated_at: Date;
+	@UpdatedAt
+	@IsDate
+	@Column(DataType.TIME)
+	updated_at: Date;
 
 }
